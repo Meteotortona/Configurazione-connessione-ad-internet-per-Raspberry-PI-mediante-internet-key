@@ -193,9 +193,9 @@ CHECK_CONNECTION_SCRIPT="/home/${SUDO_USER:-$USER}/check_internet_connection.sh"
 echo "#!/bin/bash" > $CHECK_CONNECTION_SCRIPT
 echo "" >> $CHECK_CONNECTION_SCRIPT
 echo "fping -c1 -t 1000 www.google.it > /dev/null 2>&1" >> $CHECK_CONNECTION_SCRIPT
-echo "if [ \"$?\" != 0 ]" >> $CHECK_CONNECTION_SCRIPT
+echo "if [ \"\$?\" != 0 ]" >> $CHECK_CONNECTION_SCRIPT
 echo "then" >> $CHECK_CONNECTION_SCRIPT
-echo "	echo `date`\" - Riavvio connessione internet\" >> /home/${SUDO_USER:-$USER}/internet_connection.log" >> $CHECK_CONNECTION_SCRIPT
+echo "	echo \`date\`\" - Riavvio connessione internet\" >> /home/${SUDO_USER:-$USER}/internet_connection.log" >> $CHECK_CONNECTION_SCRIPT
 echo "	systemctl restart internetkey.service" >> $CHECK_CONNECTION_SCRIPT
 echo "fi" >> $CHECK_CONNECTION_SCRIPT
 echo "" >> $CHECK_CONNECTION_SCRIPT
@@ -216,7 +216,6 @@ else
 	echo ""
 	sleep 15
 	IP_NEW=`curl -s http://whatismyip.akamai.com/`
-	systemctl stop internetkey.service
 	if [[ "$IP_ORIG" != "$IP_NEW" ]];
 	then
 		echo "[OK] La configurazione della chiavetta è andata a buon fine"
