@@ -35,6 +35,8 @@ then
 	exit 1
 fi
 
+clear
+
 echo ""
 echo "Quale operatore telefonico stai utilizzando ?"
 echo ""
@@ -70,7 +72,7 @@ case "$OPERATORE" in
     	;;
 *) 	echo ""
 	echo "Operatore non gestito, dovrai procedere ad inserire i parametri manualmente al termine dell'esecuzione dello script"
-	echo "Consulta l'area 'problemi comuni' del post per capire come procedere"
+	echo "Consulta l'area \"Verifica problemi\" del post per capire come procedere"
 	echo ""
 	APN="<inserisci APN qui>"
     	PHONE="<inserisci numero da comporre qui>"
@@ -207,7 +209,7 @@ chmod +x $CHECK_CONNECTION_SCRIPT
 if [[ $OPERATORE -eq 0  ||  $OPERATORE  -gt 7  ]];
 then
 	echo ""
-	echo "[WARN] Non è stato possibile configurare l'APN corretto per il tuo operatore, visualizza l'area \"problemi comuni\" del post per ulteriori dettagli"
+	echo "[WARN] Non è stato possibile configurare l'APN corretto per il tuo operatore, visualizza l'area \"Verifica problemi\" del post per ulteriori dettagli"
 	exit 0
 else
 	IP_ORIG=`curl -s http://whatismyip.akamai.com/`
@@ -221,7 +223,7 @@ else
 		echo "[OK] La configurazione della chiavetta è andata a buon fine"
 		exit 0
 	else
-		echo "[FAIL] La configurazione della chiavetta non è andata a buon fine, visualizza l'area \"problemi comuni\" del post per ulteriori dettagli"
+		echo "[FAIL] La configurazione della chiavetta non è andata a buon fine, visualizza l'area \"Verifica problemi\" del post per ulteriori dettagli"
 		exit 1
 	fi
 fi
